@@ -5,9 +5,18 @@ if exists('g:loaded_vim_airline_clock_tick')
     finish
 endif
 
-
 if !exists('g:loaded_vim_airline_clock')
     echoerr "vim-airline-clock is not loaded!"
+endif
+
+" Default clock format
+if !exists('g:airline#extensions#clock_tick#format')
+  let g:airline#extensions#clock_tick#format = '%H:%M'
+endif
+
+" Effects the tick rate
+if !exists('g:airline#extensions#clock_tick#delta')
+  let g:airline#extensions#clock_tick#delta = 'H'
 endif
 
 let g:loaded_vim_airline_clock_tick = 1
@@ -26,22 +35,16 @@ let s:clock_ticks = {
     \12: '🕛 ',
 \}
 
-" function s:ClockTicks()
-"     return lh#option#Get("clock_ticks", s:clock_ticks)
-" endfunction
-
-function GetClockTick()
-    let mod = (strftime('%s') % 12) + 1
-    return s:clock_ticks[mod]
+" Overwrite clock#format
+function! airline#extensions#clock_tick#get()
+    let mod = (strftime('%' .
+        \ g:airline#extensions#clock_tick#delta) % 12) + 1
+    let g:airline#extensions#clock#format = s:clock_ticks[mod] .
+        \ strftime(g:airline#extensions#clock_tick#format)
 endfunction
 
-
-
-function! airline#extensions#clock#timerfn(timer)
-    let g:airline#extensions#clock#format = GetClockTick() . "%H:%M"
-  call airline#update_statusline()
+" Overwrite clock#get function
+function! airline#extensions#clock#get()
+  call airline#extensions#clock_tick#get()
+  return g:airline#extensions#clock#format
 endfunction
-
-let g:airline#extensions#clock#timer = timer_start(
-      \ g:airline#extensions#clock#updatetime,
-      \ 'airline#extensions#clock#timerfn',{'repeat':-1})
