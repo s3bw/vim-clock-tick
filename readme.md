@@ -2,9 +2,13 @@
     Vim Clock Tick
 </h1>
 
-Add a ticking clock face to [airline-clock](https://github.com/enricobacis/vim-airline-clock)
+<p align="center">
+    Add a ticking clock face to <a href="https://github.com/enricobacis/vim-airline-clock">airline-clock</a>
+</p>
 
-![](.screenshot/clock_shot.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/GiantsLoveDeathMetal/vim-clock-tick/master/.screenshot/clock_shot.png"/>
+</p>
 
 ## Installing
 
