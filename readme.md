@@ -10,6 +10,8 @@
     <img src="https://raw.githubusercontent.com/GiantsLoveDeathMetal/vim-clock-tick/master/.screenshot/clock_shot.png"/>
 </p>
 
+
+
 ## Installing
 
 Using pathogen, clone into `~/.vim/bundles/vim-clock-tick`
