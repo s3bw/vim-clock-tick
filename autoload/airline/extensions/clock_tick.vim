@@ -21,26 +21,27 @@ endif
 
 let g:loaded_vim_airline_clock_tick = 1
 let s:clock_ticks = {
-    \1: '🕐 ',
-    \2: '🕑 ',
-    \3: '🕒 ',
-    \4: '🕓 ',
-    \5: '🕔 ',
-    \6: '🕕 ',
-    \7: '🕖 ',
-    \8: '🕗 ',
-    \9: '🕘 ',
-    \10: '🕙 ',
-    \11: '🕚 ',
-    \12: '🕛 ',
+    \2: ' 🕐',
+    \3: ' 🕑',
+    \4: ' 🕒',
+    \5: ' 🕓',
+    \6: ' 🕔',
+    \7: ' 🕕',
+    \8: ' 🕖',
+    \9: ' 🕗',
+    \10: ' 🕘',
+    \11: ' 🕙',
+    \12: ' 🕚',
+    \1: ' 🕛',
 \}
 
 " Overwrite clock#format
 function! airline#extensions#clock_tick#get()
     let mod = (strftime('%' .
         \ g:airline#extensions#clock_tick#delta) % 12) + 1
-    let g:airline#extensions#clock#format = s:clock_ticks[mod] .
-        \ strftime(g:airline#extensions#clock_tick#format)
+    let g:airline#extensions#clock#format =
+        \ strftime(g:airline#extensions#clock_tick#format) .
+        \ s:clock_ticks[mod]
 endfunction
 
 " Overwrite clock#get function
