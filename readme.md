@@ -10,6 +10,10 @@
     <img src="https://raw.githubusercontent.com/GiantsLoveDeathMetal/vim-clock-tick/master/.screenshot/clock_shot.png"/>
 </p>
 
+## Why?
+
+Having a clock in vim is helpful when you're working in full screen. Adding the icon just serves as an indication that you're looking at the time. There is no reason for having it animated.
+
 ## Installing
 
 Using pathogen, clone into `~/.vim/bundles/vim-clock-tick`
